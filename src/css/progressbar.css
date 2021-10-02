@@ -12,9 +12,9 @@
 }
 
 .__PROGRESSBAR_progress {
-    width: 20%;
+    width: 0px;
     height: var(--height-progress);
-    display: block;
     background-color: #2CD25E;
+    display: block;
     border-radius: 0px 0px 15px 15px;
 }
