@@ -41,10 +41,9 @@ export class LoadCheck {
     }
 
     progressBar(){
-        if(!this.isComplete()){
-            let percentage = fullProgressBar / events;
-            let bar = document.getElementById('__PROGRESSBAR_progress');
-            bar.style.width = `${percentage*eventsSuccess}%`;
-        }
+        let percentage = fullProgressBar / events;
+        let bar = document.getElementById('__PROGRESSBAR_progress');
+        bar.style.width = `${percentage * eventsSuccess}%`;
+        bar.style.backgroundColor = this.colors()
     }
 }
