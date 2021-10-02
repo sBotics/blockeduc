@@ -20,6 +20,10 @@
     "electron": "^15.1.0"
   },
   "dependencies": {
-    "axios": "^0.22.0"
+    "axios": "^0.22.0",
+    "cryptr": "^6.0.2",
+    "dotenv": "^10.0.0",
+    "extend-shallow": "^3.0.2",
+    "sbotics-files-manager": "^1.4.3"
   }
 }

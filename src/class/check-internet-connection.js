@@ -1,20 +1,13 @@
 import {UrlDictionary} from "./url-dictionary.js";
+
 const axios = require('axios');
 
 const urlDictionary = new UrlDictionary();
 
 export class CheckInternetConnection {
-    async isOnline(){
+    async isOnline() {
         try {
-            return !!(await axios.get(urlDictionary.google()));
-        } catch (error) {
-            console.error(error);
-            return false;
-        }
-    }
-    async isServerOnline(){
-        try {
-            return !!(await axios.get(urlDictionary.sBoticsServer()));
+            return !!(await axios.get(urlDictionary.getGoogle()));
         } catch (error) {
             console.error(error);
             return false;

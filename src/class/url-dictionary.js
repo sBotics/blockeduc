@@ -1,8 +1,13 @@
 export class UrlDictionary {
-    google(){
+    getGoogle() {
         return "https://google.com"
     }
-    sBoticsServer(){
+
+    getUser(){
+        return "https://weduc.natalnet.br/api/user"
+    }
+
+    getSboticsServer() {
         return "https://sbotics.weduc.natalnet.br"
     }
 }
