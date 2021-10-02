@@ -18,5 +18,8 @@
   "homepage": "https://github.com/sBotics/blockeduc#readme",
   "devDependencies": {
     "electron": "^15.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.22.0"
   }
 }

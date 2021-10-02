@@ -1,9 +1,8 @@
 const {app, screen, dialog, BrowserWindow} = require('electron')
-const path = require('path')
 
 /* Error Disabled */
-dialog.showErrorBox = function(title, content) {
-    console.log(`Erro: ${title}\n${content}`);
+dialog.showErrorBox = function (title, content) {
+    console.log(`error: ${title}\n${content}`);
 };
 
 function createWindow() {
@@ -14,15 +13,17 @@ function createWindow() {
         width: width,
         height: height,
         menu: null,
+        autoHideMenuBar: true,
         webPreferences: {
             preload: `${__dirname}/preload.js`,
             nodeIntegration: true,
             contextIsolation: false,
             enableRemoteModule: true,
         }
-    })
-    mainWindow.loadFile(`${__dirname}/routes/index.html`)
-    mainWindow.webContents.openDevTools()
+    });
+    mainWindow.loadFile(`${__dirname}/routes/index.html`).then();
+    mainWindow.setMenuBarVisibility(false);
+    mainWindow.webContents.openDevTools();
 }
 
 app.whenReady().then(() => {

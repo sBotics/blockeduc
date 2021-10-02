@@ -1,18 +1,67 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
-    <title>Hello World!</title>
+    <meta charset="UTF-8"/>
+    <meta content="IE=edge" http-equiv="X-UA-Compatible"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>BlockEduc</title>
+
+    <!-- CSS -->
+    <link href="../src/css/index.css" rel="stylesheet"/>
+    <link href="../src/css/load.css" rel="stylesheet"/>
+    <link href="../src/css/progressbar.css" rel="stylesheet"/>
 </head>
 <body>
-<h1>Hello World!</h1>
-We are using Node.js <span id="node-version"></span>,
-Chromium <span id="chrome-version"></span>,
-and Electron <span id="electron-version"></span>.
-
-<!-- You can also require other files to run in this process -->
-<script src="../renderer.js"></script>
+<div class="__LOAD__">
+    <div class="__LOAD_header">
+        <img alt="" src="../assets/img/zul_white.png"/>
+    </div>
+    <div class="__LOAD_content">
+        <div class="__LOAD_container">
+            <div class="__LOAD_container_img">
+                <img src="../assets/img/load_banner.png"/>
+            </div>
+            <div class="__LOAD_menu-content">
+                <div class="__LOAD_menu-container">
+                    <div class="__LOAD_menu-container-info">
+                        <div class="__LOAD_menu-header">
+                            <h1>BlockEduc</h1>
+                            <span>v1.3.0.0</span>
+                        </div>
+                        <div class="__LOAD_menu-body">
+                            <div class="__LOAD_menu-body-options">
+                                <div class="__LOAD_menu-options-select">
+                                    <div id="__LOAD_MOSS_InternetConnection" class="__LOAD_menu-options-select-state"></div>
+                                    <p>Conexão com a internet</p>
+                                </div>
+                                <div class="__LOAD_menu-options-select">
+                                    <div id="__LOAD_MOSS_ServerConnection" class="__LOAD_menu-options-select-state"></div>
+                                    <p>Conexão com o servidor</p>
+                                </div>
+                                <div class="__LOAD_menu-options-select">
+                                    <div id="__LOAD_MOSS_UserLoad" class="__LOAD_menu-options-select-state"></div>
+                                    <p>Carregando usuário</p>
+                                </div>
+                                <div class="__LOAD_menu-options-select">
+                                    <div id="__LOAD_MOSS_SearchAndLoadProgram" class="__LOAD_menu-options-select-state"></div>
+                                    <p>Procurando e Carregando programa</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="__LOAD_menu-footer">
+                        <div class="__PROGRESSBAR__">
+                            <div class="__PROGRESSBAR_progress"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="__LOAD_footer">
+        <img alt="" src="../assets/lang/pt_BR.png"/>
+    </div>
+</div>
+<script src="../src/controller/__Loading_manager.js" type="module"></script>
 </body>
 </html>

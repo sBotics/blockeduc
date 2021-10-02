@@ -1,0 +1,20 @@
+:root {
+    --width-progress: 100%;
+    --height-progress: 4px;
+    --background-default: white;
+}
+
+.__PROGRESSBAR__ {
+    width: var(--width-progress);
+    height: var(--height-progress);
+    background-color: var(--background-default);
+    border-radius: 0px 0px 15px 15px;
+}
+
+.__PROGRESSBAR_progress {
+    width: 20%;
+    height: var(--height-progress);
+    display: block;
+    background-color: #2CD25E;
+    border-radius: 0px 0px 15px 15px;
+}
