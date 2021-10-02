@@ -2,7 +2,7 @@
   "name": "blockeduc",
   "version": "3.0.0",
   "description": "Block programming editor for the sBotics simulator",
-  "author": "Julio Cesar Vera Neto <neto-vera@hotmailk.com>",
+  "author": "Julio Cesar Vera Neto <neto-vera@hotmail.com>",
   "license": "MIT",
   "main": "main.js",
   "scripts": {
@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/sBotics/blockeduc/issues"
   },
-  "homepage": "https://github.com/sBotics/blockeduc#readme"
+  "homepage": "https://github.com/sBotics/blockeduc#readme",
+  "devDependencies": {
+    "electron": "^15.1.0"
+  }
 }
