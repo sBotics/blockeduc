@@ -8,7 +8,6 @@ const checkInternetConnection = new CheckInternetConnection();
 const loadCheck = new LoadCheck();
 const connectionManager = new ConnectionManager();
 
-/* Check Online Connection */
 checkInternetConnection.isOnline().then(r => {
     loadCheck.events('__LOAD_MOSS_InternetConnection', r);
 
@@ -19,27 +18,38 @@ checkInternetConnection.isOnline().then(r => {
         accessToken = user['accessToken'];
     }
 
-
-
-
     connectionManager.getUser({accessToken}).then(r => {
         loadCheck.events('__LOAD_MOSS_ServerConnection', r);
 
-        /* Search Programing And Open DataBase */
-
         const dataSbotics = openFileSbotics()
         if(dataSbotics){
-            const programID = dataSbotics['code']['id'];
-            const programName = dataSbotics['code']['name'];
-            const programLanguage = dataSbotics['code']['language'];
+            let programID = dataSbotics['code']['id'];
+            let programName = dataSbotics['code']['name'];
+            let programLanguage = dataSbotics['code']['language'];
 
+            connectionManager.getPrograming({
+                accessToken: accessToken,
+                programId: programID
+            }).then(r => {
+                let blockEducCode = r['blockly_code'];
 
+                localStorage.setItem('programID', programID);
+                localStorage.setItem('programName', programName);
+                localStorage.setItem('programLanguage', programLanguage);
+                localStorage.setItem('blockEducCode', blockEducCode);
 
+                loadCheck.events('__LOAD_MOSS_SearchAndLoadProgram', r);
 
-        }
+                if (loadCheck.isComplete()) {
+                    console.log("Pronto para TROCAR A VIEW")
+                }
 
-        if (loadCheck.isComplete()) {
-            console.log("Pronto para TROCAR A VIEW")
+            }).catch(() => {
+                loadCheck.events('__LOAD_MOSS_SearchAndLoadProgram', false);
+            })
+
+        } else {
+            loadCheck.events('__LOAD_MOSS_SearchAndLoadProgram', false);
         }
 
     }).catch(() => {
@@ -47,18 +57,9 @@ checkInternetConnection.isOnline().then(r => {
         loadCheck.events('__LOAD_MOSS_SearchAndLoadProgram', false);
     })
 
-}).catch(e => {
-    console.error(e);
+}).catch(() => {
+    loadCheck.events('__LOAD_MOSS_InternetConnection', false);
+    loadCheck.events('__LOAD_MOSS_UserLoad', false);
+    loadCheck.events('__LOAD_MOSS_ServerConnection', false);
+    loadCheck.events('__LOAD_MOSS_SearchAndLoadProgram', false);
 })
-
-
-/*
-* -> Acessar o arquivo de configuração do launcher
-* -> Pegar o token do user
-* -> Fazer uma request para o wEduc, request user
-*    > then('Proceed')
-*    > catch('error init')
-*
-* */
-
-

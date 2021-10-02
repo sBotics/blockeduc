@@ -7,7 +7,8 @@ export class UrlDictionary {
         return "https://weduc.natalnet.br/api/user"
     }
 
-    getSboticsServer() {
-        return "https://sbotics.weduc.natalnet.br"
+    getProgram(programID){
+        return `https://weduc.natalnet.br/api/programs/${programID}`
     }
+
 }

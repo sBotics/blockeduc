@@ -5,6 +5,13 @@ const fullProgressBar = 100;
 
 export class LoadCheck {
     constructor(base = true) {
+
+        localStorage.setItem('programID', undefined);
+        localStorage.setItem('programName', undefined);
+        localStorage.setItem('programLanguage', undefined);
+        localStorage.setItem('blockEducCode', undefined);
+
+
         if (base) {
             this.state = "processing";
             this.changeColorLoading('__LOAD_MOSS_InternetConnection');

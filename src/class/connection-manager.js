@@ -33,4 +33,32 @@ export class ConnectionManager {
                 });
         });
     }
+    async getPrograming(options){
+        options = extend(
+            {
+                accessToken: '',
+                programId: undefined
+            },
+            options,
+        );
+        const accessToken = options.accessToken;
+        const programId = options.programId;
+
+        if (!accessToken || !programId) return false;
+
+        return new Promise((resolve, reject) => {
+            axios
+                .get(urlDictionary.getProgram(programId), {
+                    headers: {
+                        Authorization: `Bearer ${accessToken}`,
+                    },
+                })
+                .then((response) => {
+                    resolve(response.data);
+                })
+                .catch(() => {
+                    reject(false);
+                });
+        });
+    }
 }
