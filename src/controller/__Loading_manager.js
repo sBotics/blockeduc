@@ -2,6 +2,7 @@ import {CheckInternetConnection} from "../class/check-internet-connection.js";
 import {LoadCheck} from "../class/load-check.js";
 import {FileUser} from "../class/file-user.js";
 import {ConnectionManager} from "../class/connection-manager.js";
+import {openFileSbotics} from "../utils/open-file-sbotics.js";
 
 const checkInternetConnection = new CheckInternetConnection();
 const loadCheck = new LoadCheck();
@@ -18,15 +19,28 @@ checkInternetConnection.isOnline().then(r => {
         accessToken = user['accessToken'];
     }
 
+
+
+
     connectionManager.getUser({accessToken}).then(r => {
         loadCheck.events('__LOAD_MOSS_ServerConnection', r);
 
         /* Search Programing And Open DataBase */
 
+        const dataSbotics = openFileSbotics()
+        if(dataSbotics){
+            const programID = dataSbotics['code']['id'];
+            const programName = dataSbotics['code']['name'];
+            const programLanguage = dataSbotics['code']['language'];
+
+
+
+
+        }
+
         if (loadCheck.isComplete()) {
             console.log("Pronto para TROCAR A VIEW")
         }
-
 
     }).catch(() => {
         loadCheck.events('__LOAD_MOSS_ServerConnection', false);
