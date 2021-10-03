@@ -3,6 +3,7 @@ import {LoadCheck} from "../class/load-check.js";
 import {FileUser} from "../class/file-user.js";
 import {ConnectionManager} from "../class/connection-manager.js";
 import {openFileSbotics} from "../utils/open-file-sbotics.js";
+import {ApplicationManager} from "../class/application-manager.js";
 
 const checkInternetConnection = new CheckInternetConnection();
 const loadCheck = new LoadCheck();
@@ -42,6 +43,7 @@ checkInternetConnection.isOnline().then(r => {
 
                 if (loadCheck.isComplete()) {
                     console.log("Pronto para TROCAR A VIEW")
+                    new ApplicationManager().setLoad(false);
                 }
 
             }).catch(() => {

@@ -70,10 +70,7 @@
 }
 
 .__LOAD_menu-container-info {
-    padding-top: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-bottom: 15px;
+    padding: 15px;
 }
 
 .__LOAD_menu-header {
@@ -128,8 +125,7 @@
 
 .__LOAD_menu-options-select p {
     padding: 0px;
-    margin: 0px;
-    margin-left: 5px;
+    margin: 0px 0px 0px 5px;
     font-weight: normal;
     font-size: 15px;
     color: #9f9f9f;
