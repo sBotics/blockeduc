@@ -2,7 +2,7 @@ let sBoticsFilesManager = require('sbotics-files-manager');
 
 const __sBoticsFilesManager = new sBoticsFilesManager({
     useDirectoryHome: true,
-    nameFolderDefault: 'wEduc',
+    nameFolderDefault: 'sBotics',
     saveAllFromDefaultDirectory: true,
 });
 

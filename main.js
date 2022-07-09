@@ -21,7 +21,8 @@ function createWindow() {
             enableRemoteModule: true,
         }
     });
-    mainWindow.loadFile(`${__dirname}/routes/index.html`).then();
+    // mainWindow.loadFile(`${__dirname}/routes/index.html`).then();
+mainWindow.loadURL(`https://code.sbotics.net`).then();
     mainWindow.setMenuBarVisibility(false);
     mainWindow.webContents.openDevTools();
 }

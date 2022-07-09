@@ -1,64 +1,72 @@
-import {UrlDictionary} from "./url-dictionary.js";
+import { UrlDictionary } from "./url-dictionary.js";
 
-let extend = require('extend-shallow');
-let axios = require('axios');
+let extend = require("extend-shallow");
+let axios = require("axios");
 
 const urlDictionary = new UrlDictionary();
 
 export class ConnectionManager {
-    async getUser(options) {
-        options = extend(
-            {
-                accessToken: '',
-            },
-            options,
-        );
+  getDictionary() {
+    return {
+      google: "https://google.com",
+      user: `https://auth.sbotics.net/api/user`,
+      program: `https://sbotics.net/api/programs`,
+    };
+  }
 
-        const accessToken = options.accessToken;
+  async getUser(options) {
+    options = extend(
+      {
+        accessToken: "",
+      },
+      options
+    );
 
-        if (!accessToken) return false;
+    const accessToken = options.accessToken;
 
-        return new Promise((resolve, reject) => {
-            axios
-                .get(urlDictionary.getUser(), {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                })
-                .then((response) => {
-                    resolve(response.data);
-                })
-                .catch(() => {
-                    reject(false);
-                });
+    if (!accessToken) return false;
+
+    return new Promise((resolve, reject) => {
+      axios
+        .get(this.getDictionary()['user'], {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          resolve(response.data);
+        })
+        .catch(() => {
+          reject(false);
         });
-    }
-    async getPrograming(options){
-        options = extend(
-            {
-                accessToken: '',
-                programId: undefined
-            },
-            options,
-        );
-        const accessToken = options.accessToken;
-        const programId = options.programId;
+    });
+  }
+  async getPrograming(options) {
+    options = extend(
+      {
+        accessToken: "",
+        programId: undefined,
+      },
+      options
+    );
+    const accessToken = options.accessToken;
+    const programId = options.programId;
 
-        if (!accessToken || !programId) return false;
+    if (!accessToken || !programId) return false;
 
-        return new Promise((resolve, reject) => {
-            axios
-                .get(urlDictionary.getProgram(programId), {
-                    headers: {
-                        Authorization: `Bearer ${accessToken}`,
-                    },
-                })
-                .then((response) => {
-                    resolve(response.data);
-                })
-                .catch(() => {
-                    reject(false);
-                });
+    return new Promise((resolve, reject) => {
+      axios
+        .get(`${this.getDictionary()['program']}/${programId}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((response) => {
+          resolve(response.data);
+        })
+        .catch(() => {
+          reject(false);
         });
-    }
+    });
+  }
 }
